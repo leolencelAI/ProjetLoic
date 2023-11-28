@@ -1,0 +1,22 @@
+.position{
+  display: flex;
+  flex-direction: column ;
+  height: 900px;
+  background-image: url("../../../assets/1200x680_gettyimages-946319974.png");
+  background-size: 100%;
+  align-items: center;
+}
+
+img{
+width: max-content;
+margin-bottom: 7rem;
+}
+
+.txt
+{
+
+display: flex;
+align-items: center;
+flex-direction: column ;
+margin: 1rem;
+}

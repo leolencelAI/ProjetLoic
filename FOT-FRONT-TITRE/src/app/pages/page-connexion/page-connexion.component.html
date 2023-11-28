@@ -1,0 +1,20 @@
+<div class="flex items-center justify-center my-28">
+  <form class="relative w-full max-w-xs md:max-w-md" [formGroup]="connexion" (ngSubmit)="OnConnect()">
+    <div class="mb-12">
+      <label for="email" class="block mb-2 text-sm font-semibold tracking-wider text-gray-900 dark:text-white">Votre Email</label>
+      <input formControlName="email" type="email" id="email" [ngClass]="(connexion.get('email')?.invalid && connexion.get('email')?.touched) ? 'border-red-600' : 'border-gray-300'" class="bg-gray-50 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="name@gmail.com" required>
+    </div>
+    <div class="mb-2">
+      <label for="password" class="block mb-2 text-sm font-semibold tracking-wider text-gray-900 dark:text-white">Mot De Passe</label>
+      <div class="relative">
+        <input formControlName="password" [type]="ShowPassword ? 'text' : 'password'" id="password" [ngClass]="(connexion.get('password')?.invalid && connexion.get('password')?.touched) ? 'border-red-600' : 'border-gray-300'" class="bg-gray-50 text-gray-900 text-xs rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="*********" required>
+        <fa-icon [icon]="ShowPassword ? faEyeSlash : faEye" (click)="ShowPassword = !ShowPassword" class="absolute top-1/2 right-3 transform -translate-y-1/2 cursor-pointer"></fa-icon>
+      </div>
+    </div>
+    <a class="ml-2">Tu n'est pas encore inscrit ?  <span [routerLink]="['/inscription']"  class="italic font-medium text-gray-700 cursor-pointer">C'est ici!</span></a>
+    <div class="flex flex-col items-center mt-16 mb-4">
+      <button type="submit" [disabled]="connexion.invalid" class="cursor-pointer h-12 font-bold tracking-wider text-yellow-200 family-roboto word-spacing bg-black focus:outline-none rounded-2xl text-xs sm:text-sm w-full w-auto px-4 py-2 text-center">Se Connecter</button>
+    </div>
+    <div class="left-1/2 transform -translate-x-1/2 whitespace-nowrap  bg-red-500 text-white p-2 absolute rounded-lg" *ngIf="errorMsg">{{ errorMsg }}</div>
+  </form>
+</div>

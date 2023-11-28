@@ -1,0 +1,67 @@
+<div class="fixed z-50 left-0 top-0 bg-black w-full h-full">
+  <fa-icon class="fixed z-[100] text-4xl cursor-pointer m-8 text-white rounded transition duration-300 hover:text-yellow-800" (click)="closeMenu()" [icon]="faXmark"></fa-icon>
+  <div class="flex justify-center items-center"></div>
+  <ul
+    class="font-medium flex flex-col mt-24 items-center dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"
+  >
+    <li>
+      <a
+      [ngClass]="{'text-yellow-800': activeTab === 1}"
+      (click)="closeMenu()"
+      class="block py-4 px-6 text-2xl text-white rounded transition duration-300 hover:text-yellow-800"
+      [routerLink]="['/home']"
+    >
+      <fa-icon [icon]="faHome"></fa-icon>
+    </a>
+    </li>
+    <li>
+      <a
+        [ngClass]="{'text-yellow-800': activeTab === 2}"
+        (click)="closeMenu()"
+        class="block py-4 px-6 text-lg font-bold text-white rounded transition duration-300 hover:text-yellow-800"
+        [routerLink]="['/ma-collection']"
+        >Collection
+      </a>
+    </li>
+    <li *ngIf="isAuth$ | async">
+      <a
+        [ngClass]="{'text-yellow-800': activeTab === 3}"
+        (click)="closeMenu()"
+        class="block py-4 px-6 text-lg font-bold text-white rounded transition duration-300 hover:text-yellow-800"
+        [routerLink]="['/ma-liste']"
+        >Mes Favoris</a
+      >
+
+    </li>
+    <li *ngIf="(isAdmin$ | async) && (isAuth$ | async)">
+      <a
+        [ngClass]="{'text-yellow-800': activeTab === 5}"
+        (click)="closeMenu()"
+        class="block py-4 px-6 text-lg font-bold text-white rounded transition duration-300 hover:text-yellow-800"
+        [routerLink]="['/admin']"
+        >Espace Admin</a
+      >
+    </li>
+    <li *ngIf="!(isAuth$ | async)">
+      <a
+        [ngClass]="{'text-yellow-800': activeTab === 4}"
+        (click)="closeMenu()"
+        class="block py-4 px-6 text-lg font-bold text-white rounded transition duration-300 hover:text-yellow-800"
+        [routerLink]="['/connexion']"
+        >Connexion</a
+      >
+    </li>
+    <li *ngIf="(isAuth$ | async)">
+      <a
+        class="block py-4 px-6 text-base font-extralight italic text-white md:hover:bg-transparent "
+        >{{ user$.email }}</a>
+    </li>
+    <li *ngIf="(isAuth$ | async)">
+      <a
+        class="block py-4 px-6 text-2xl font-bold text-white rounded transition duration-300 hover:bg-rgb-yellow-500 hover:text-yellow-800  dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+        (click)="deconnect()"
+        ><fa-icon [icon]="faLogout"></fa-icon></a
+      >
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,33 @@
+<form [formGroup]="articleForm" class="relative mx-20 mt-20 mb-32">
+  <div class="mb-12 lg:w-2/6 md:w-6/12 sm:w-10/12">
+    <label for="titre" class="block mb-2 text-sm font-semibold tracking-wider text-gray-900 dark:text-white">Titre</label>
+    <input type="text" class="mt-4 bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="titre" formControlName="titre">
+  </div>
+  <div class="mb-12  lg:w-2/6 md:w-6/12 sm:w-10/12">
+    <label for="year" class="block mb-2 text-sm font-semibold tracking-wider text-gray-900 dark:text-white">Year</label>
+    <input type="text" class="mt-4 bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="year" formControlName="year">
+  </div>
+  <div class="mb-12 lg:w-2/6 md:w-6/12 sm:w-10/12">
+    <label for="description" class="block mb-2 text-sm font-semibold tracking-wider text-gray-900 dark:text-white">Description</label>
+    <textarea class="resize-none block p-2.5 mt-4 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="description" rows="5" formControlName="description"></textarea>
+  </div>
+  <div class="my-12 flex flex-row h-28">
+    <div>
+      <button class="cursor-pointer h-12 font-bold tracking-wider text-yellow-200 family-roboto word-spacing bg-black focus:outline-none rounded-full text-xs sm:text-sm w-full sm:w-auto px-4 py-2 text-center" (click)="imageInput.click()">Add Image</button>
+    </div>
+    <input type="file" accept="image/*" #imageInput (change)="onFileAdded($event)" hidden/>
+    <img [src]="imagePreview" *ngIf="imagePreview" style="max-height:100px"  class="ml-8 rounded-lg">
+  </div>
+  <div class="mb-1 lg:w-2/6 md:w-6/12 sm:w-10/12">
+    <label for="category" class="block mb-2 text-sm font-semibold tracking-wider text-gray-900 dark:text-white">Category</label>
+    <select class="mt-4 bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" id="category" formControlName="category">
+      <option value="" disabled selected>Select a category</option>
+      <option *ngFor="let category of categories" [value]="category.id_category">{{ category.name }}</option>
+    </select>
+  </div>
+  <div class="flex justify-center mt-20">
+    <button class="cursor-pointer h-12 font-bold tracking-wider text-yellow-200 family-roboto word-spacing bg-black focus:outline-none rounded-2xl text-xs sm:text-sm sm:w-auto px-4 py-2 text-center" (click)="onSubmit()" [disabled]="articleForm.invalid">Create</button>
+  </div>
+  <p class="absolute w-2/12 mt-8 left-1/2 transform -translate-x-1/2 opacity-80 text-center bg-green-400 text-white m-auto py-4 rounded-lg" *ngIf="successMsg">{{ successMsg }}</p>
+  <p class="absolute w-2/12 mt-8 left-1/2 transform -translate-x-1/2 opacity-80 text-center bg-red-400 text-white m-auto py-4 rounded-lg" *ngIf="errorMsg">{{ errorMsg }}</p>
+</form>

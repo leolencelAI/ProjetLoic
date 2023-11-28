@@ -1,0 +1,21 @@
+<div class="min-h-[80vh] basdecard flex flex-wrap flex-row mb-24 mt-12">
+  <ng-container *ngFor="let article of article">
+    <a [routerLink]="[article.id_article]" class="lg:w-4/12 md:w-6/12 sm:w-full">
+      <div class="py-5 px-12">
+        <img
+          class="rounded-lg object-cover h-56 w-full"
+          [src]="baseUrl + article.id_picture"
+          alt=""
+        />
+        <h5
+          class="mt-4 mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          {{ article.titre }}
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          {{ article.year }}
+        </p>
+      </div>
+    </a>
+  </ng-container>
+</div>

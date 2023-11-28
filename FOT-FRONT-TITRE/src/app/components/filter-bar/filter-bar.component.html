@@ -1,0 +1,15 @@
+<div class="m-8">
+  <label><fa-icon [icon]="faFilter" class="inline-block text-xl"></fa-icon></label>
+  <details class="relative inline-block ml-6">
+      <summary (click)="onDetailsClicked($event)" [ngClass]="categoryDetailsClicked ? 'rounded-t-lg' : 'rounded-lg'" class="font-bold cursor-pointer p-2 text-yellow-200 bg-black">Choisir la/les catégorie(s)</summary>
+      <ul class="absolute rounded-b-lg  text-yellow-200 bg-black w-full">
+          <li *ngFor="let category of allCategories" class="my-4 ml-2">
+              <label class="font-bold"><input class="checkbox-color text-white rounded focus:outline-none focus:ring-0 focus:ring-offset-0 mr-2" type="checkbox" name="{{ category.name }}" value="{{ category.id_category }}" id="category" (change)="onCheckCategory($event)"/>{{ category.name }}</label>
+          </li>
+      </ul>
+  </details>
+</div>
+
+
+
+

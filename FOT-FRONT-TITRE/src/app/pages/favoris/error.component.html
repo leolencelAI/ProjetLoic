@@ -1,0 +1,26 @@
+<p *ngIf="messageInfo" class="font-bold text-2xl mt-20 mx-auto w-fit bg-black text-yellow-200 p-4 rounded-lg">{{ messageInfo }}</p>
+<div class="ml-16 min-height-s my-24">
+  <div class="w-fit pb-24" *ngFor="let favoris of articlesFavori">
+    <a [routerLink]="'/ma-collection/'+[favoris.id_article]" class="cursor-pointer w-fit">
+      <img
+      class="rounded-lg mb-12 h-64 w-96"
+      [src]="baseUrl + favoris.id_picture"
+      alt=""
+      />
+    </a>
+    <div class="mb-6 flex flex-row justify-between items-center">
+      <h5 class="text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{favoris.titre}}</h5>
+      <fa-icon
+        [icon]="faBin"
+        class="text-red-500 text-lg cursor-pointer"
+        (click)="removeFavoris(favoris.id_article)"
+      ></fa-icon>
+    </div>
+    <p class="mb-6 font-normal text-gray-700 dark:text-gray-400">{{favoris.year}}</p>
+  </div>
+  <p class="mx-auto w-[200px] opacity-80 text-center bg-green-400 text-white m-auto py-4 rounded-lg" *ngIf="msgSuccess">{{ msgSuccess }}</p>
+  <p class="mx-auto w-[300px] opacity-80 text-center bg-red-400 text-white m-auto py-4 rounded-lg" *ngIf="msgError">{{ msgError }}</p>
+</div>
+
+
+

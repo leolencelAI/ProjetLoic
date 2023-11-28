@@ -1,0 +1,61 @@
+/* .h1 {
+size: 100 rem;
+  color: blue;
+  position: center;
+}
+p {
+  margin: 10px 0;
+  }
+
+  .bg-blue-500 {
+    background-color: #0a0a0a; /* Couleur bleue de base */
+
+
+    /* figure.max-w-screen-md {
+      max-width: 100%;
+      margin: auto;
+
+
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+
+
+    /* .full-width-image {
+      width: 100%;
+      max-height: 30px;
+      height: 40px;
+      display: block;
+      margin-bottom: 10px; /* Marge en bas de l'image (ajustez selon vos besoins) */
+
+/*
+    .text-center {
+      text-align: center;
+    }
+
+    .text-2xl {
+      font-size: 1.5rem;
+    }
+
+    .text-3xl {
+      font-size: 2rem;
+    }
+
+    .text-4xl {
+      font-size: 2.5rem;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+
+    .font-medium {
+      font-weight: 500;
+    }
+
+    .text-gray-900 {
+      color: #333; /* Couleur du texte */
+
+
+
+
+
+

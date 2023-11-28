@@ -1,0 +1,53 @@
+<p class="mx-auto  my-10 w-[300px] opacity-80 text-center bg-red-400 text-white m-auto py-4 rounded-lg" *ngIf="errorMsg">{{ errorMsg }}</p>
+<div class="min-h-[80vh] flex flex-wrap flex-row m-12">
+  <ng-container *ngFor="let article of articles">
+    <div class="py-5 px-12 lg:w-4/12 md:w-6/12 sm:w-full">
+      <img
+        class="rounded-lg object-cover h-56 w-full"
+        [src]="baseUrl + article.id_picture"
+        alt=""
+      />
+      <div class="my-3 flex flex-row justify-between">
+        <fa-icon
+          [icon]="faPencil"
+          class="text-blue-700 cursor-pointer"
+          [routerLink]="'edit/' + [article.id_article]"
+        ></fa-icon>
+        <fa-icon
+          [icon]="faBin"
+          class="text-red-500 cursor-pointer"
+          (click)="deleteArticle(article.id_article)"
+        ></fa-icon>
+      </div>
+      <h5
+        class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+      >
+        {{ article.titre }}
+      </h5>
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        {{ article.year }}
+      </p>
+    </div>
+  </ng-container>
+</div>
+<a
+  routerLink="newArticle"
+  class="inline-flex items-center cursor-pointer h-12 m-24 font-bold tracking-wider text-yellow-200 family-roboto word-spacing bg-black focus:outline-none rounded-lg text-xs sm:text-sm w-auto px-4 py-2 text-center"
+>
+  Add article
+  <svg
+    class=" test.5 h-3.5 ml-2"
+    aria-hidden="true"
+    xmlns="http://www.w3.org/2000/svg"
+    fill="none"
+    viewBox="0 0 14 10"
+  >
+    <path
+      stroke="currentColor"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M1 5h12m0 0L9 1m4 4L9 9"
+    />
+  </svg>
+</a>

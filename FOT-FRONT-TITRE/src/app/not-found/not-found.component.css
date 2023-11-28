@@ -1,0 +1,11 @@
+.bg-img {
+  display: flex;
+  flex-direction: column ;
+  background-image: url("../../assets/BALLE_FAUTE_POUR_404.jpg");
+  background-size: 100%;
+  align-items: center;
+}
+
+.text-ultra-large {
+  font-size: 72px;
+}
